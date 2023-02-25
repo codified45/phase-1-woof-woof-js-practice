@@ -34,7 +34,7 @@ const init = () => {
                 if (obj.isGoodDog){btn.textContent = 'Good Dog!';
                 } else {btn.textContent = 'Bad Dog!'};
                 btn.addEventListener('click', goodBadToggle);
-                dogInfo.append(img, h2, btn);
+                dogInfo.replaceChildren(img, h2, btn);
             });
     };
 
