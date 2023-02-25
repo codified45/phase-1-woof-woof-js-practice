@@ -14,7 +14,7 @@ const init = () => {
                 span.id = obj.id;
                 span.addEventListener('click', displayPupInfo);
                 dogBar.appendChild(span);
-            }
+            };
         });
     
     function displayPupInfo(e){
@@ -44,8 +44,6 @@ const init = () => {
             dbPatch(true);
         };
 
-
-
         function dbPatch(bool){
             const dogBool = {
                 isGoodDog: bool,
@@ -60,7 +58,6 @@ const init = () => {
                 body: JSON.stringify(dogBool),
             };
 
-            console.log(e.target.id);
             let singlePupUrl = pupDataUrl + `/${e.target.id}`;
 
             fetch(singlePupUrl, configPatch)
