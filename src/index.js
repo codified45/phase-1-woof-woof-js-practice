@@ -3,6 +3,8 @@ const init = () => {
     let pupDataUrl = 'http://localhost:3000/pups';
     let dogBar = document.querySelector('#dog-bar');
     let dogInfo = document.querySelector('#dog-info');
+    let goodDogFilter = document.querySelector('#good-dog-filter');
+    goodDogFilter.addEventListener('click', dogFilter);
 
     fetch(pupDataUrl)
     .then(res => res.json())
@@ -66,6 +68,10 @@ const init = () => {
                     console.log(obj);
                 });
         };
+    };
+
+    function dogFilter(e){
+        
     };
 
 };
