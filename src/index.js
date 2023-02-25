@@ -78,20 +78,26 @@ const init = () => {
         } else {e.target.textContent = 'Filter good dogs: OFF';
         };
 
-        let arrayOfBadDogIds = [];
+        let arrayOfGoodDogIds = [];
 
         fetch(pupDataUrl)
         .then(res => res.json())
             .then(arr => {
                 console.log(arr);
                 for (const obj of arr){
-                    if (!obj.isGoodDog){arrayOfBadDogIds.push(obj.id)};
-                    console.log(arrayOfBadDogIds);
+                    if (obj.isGoodDog){arrayOfGoodDogIds.push(obj.id)};
+
+
+                    console.log(arrayOfGoodDogIds);
+                    console.log(obj);
                 };
-                arrayOfBadDogIds.forEach(dogId => {
+
+                arrayOfGoodDogIds.forEach(dogId => {
                     console.log(document.getElementById(dogId));
                     let span = document.getElementById(dogId);
-                    span.setAttribute("hidden", true);
+                    span.classList.add("hidden");
+
+                    // span.setAttribute("hidden", true);
                 });
             });
 

@@ -32,6 +32,16 @@
   border: 1px solid blue;
 }
 
+#dog-bar span.hidden{
+  height: 80%;
+  width: 8vw;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2em;
+  border: 1px solid blue;
+}
+
 #dog-summary-container {
   height: 75vh;
   text-align: center;
