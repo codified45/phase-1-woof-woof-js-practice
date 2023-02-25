@@ -19,7 +19,30 @@ const init = () => {
     
     function displayPupInfo(e){
         console.log(e.target.id);
+        let singlePupUrl = pupDataUrl + `/${e.target.id}`
+        console.log(singlePupUrl);
+        fetch(singlePupUrl)
+        .then(res => res.json())
+            .then(obj => {
+                console.log(obj);
+                let img = document.createElement('img');
+                img.src = obj.image;
+                let h2 = document.createElement('h2');
+                h2.textContent = obj.name;
+                let btn = document.createElement('button');
+                if (obj.isGoodDog){btn.textContent = 'Good Dog!';
+                } else {btn.textContent = 'Bad Dog!'};
+                btn.addEventListener('click', goodBadToggle);
+                dogInfo.append(img, h2, btn);
+            });
     };
+
+    function goodBadToggle(e){
+        if (e.target.textContent === 'Good Dog!'){
+            e.target.textContent = 'Bad Dog!'
+        } else {e.target.textContent = 'Good Dog!'};
+    };
+
 };
 
 document.addEventListener('DOMContentLoaded', init);
