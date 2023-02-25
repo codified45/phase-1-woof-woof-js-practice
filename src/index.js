@@ -71,7 +71,37 @@ const init = () => {
     };
 
     function dogFilter(e){
+        console.log(e.target.textContent);
         
+        if (e.target.textContent === 'Filter good dogs: OFF'){
+            e.target.textContent = 'Filter good dogs: ON';
+        } else {e.target.textContent = 'Filter good dogs: OFF';
+        };
+
+        let arrayOfBadDogIds = [];
+
+        fetch(pupDataUrl)
+        .then(res => res.json())
+            .then(arr => {
+                console.log(arr);
+                for (const obj of arr){
+                    if (!obj.isGoodDog){arrayOfBadDogIds.push(obj.id)};
+                    console.log(arrayOfBadDogIds);
+                };
+                arrayOfBadDogIds.forEach(dogId => {
+                    console.log(document.getElementById(dogId));
+                    let span = document.getElementById(dogId);
+                    span.setAttribute("hidden", true);
+                });
+            });
+
+            
+
+        // console.log(document.querySelectorAll('#dog-bar span'));
+        // let dogsInBar = document.querySelectorAll('#dog-bar span');
+        // console.log(dogsInBar);
+
+
     };
 
 };
