@@ -11,13 +11,14 @@ const init = () => {
             for (const obj of arr){
                 let span = document.createElement('span');
                 span.textContent = obj.name;
+                span.id = obj.id;
                 span.addEventListener('click', displayPupInfo);
                 dogBar.appendChild(span);
             }
         });
     
-    function displayPupInfo(){
-        console.log('i have been clicked');
+    function displayPupInfo(e){
+        console.log(e.target.id);
     };
 };
 
