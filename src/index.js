@@ -9,7 +9,6 @@ const init = () => {
     fetch(pupDataUrl)
     .then(res => res.json())
         .then(arr => {
-            console.log(arr);
             for (const obj of arr){
                 let span = document.createElement('span');
                 span.textContent = obj.name;
@@ -21,7 +20,6 @@ const init = () => {
     
     function displayPupInfo(e){
         let singlePupUrl = pupDataUrl + `/${e.target.id}`
-        console.log(singlePupUrl);
         fetch(singlePupUrl)
         .then(res => res.json())
             .then(obj => {
@@ -64,14 +62,11 @@ const init = () => {
 
             fetch(singlePupUrl, configPatch)
             .then(res => res.json())
-                .then(obj => {
-                    console.log(obj);
-                });
+                .then(obj => console.log(obj));
         };
     };
 
     function dogFilter(e){
-        console.log(e.target.textContent);
         let isFilterOn;
         if (e.target.textContent === 'Filter good dogs: OFF'){
             e.target.textContent = 'Filter good dogs: ON';
@@ -86,7 +81,6 @@ const init = () => {
         fetch(pupDataUrl)
         .then(res => res.json())
             .then(arr => {
-                console.log(arr);
                 for (const obj of arr){
                     if (obj.isGoodDog){arrayOfGoodDogIds.push(obj.id)
                     } else {arrayOfBadDogIds.push(obj.id)};
@@ -98,35 +92,10 @@ const init = () => {
                         let span = document.getElementById(dogId);
                         span.classList.add("hidden");
                     });
-                } else {
-                    let allHiddenSpans = document.querySelectorAll('#dog-bar span.hidden');
-                    allHiddenSpans.forEach(element => {
-                        console.log(element);
-                        element.classList.remove("hidden")
-                    });
+                } else {let allHiddenSpans = document.querySelectorAll('#dog-bar span.hidden');
+                    allHiddenSpans.forEach(element => element.classList.remove("hidden"));
                 };
-
-                
-
-
-
-                arrayOfGoodDogIds.forEach(dogId => {
-                    console.log(document.getElementById(dogId));
-                    let span = document.getElementById(dogId);
-                    span.classList.remove("hidden");
-                });
-                
-
-                
             });
-
-            
-
-        // console.log(document.querySelectorAll('#dog-bar span'));
-        // let dogsInBar = document.querySelectorAll('#dog-bar span');
-        // console.log(dogsInBar);
-
-
     };
 
 };
